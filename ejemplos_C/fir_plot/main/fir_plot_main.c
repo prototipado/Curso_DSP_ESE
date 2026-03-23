@@ -1,5 +1,5 @@
 /*  
-# Ejemplo IIR plot
+# Ejemplo FIR plot
 
 Este ejemplo muestra como cargar un filtro FIR generado utilizando la aplicación online [Micromodeler DSP](https://micromodeler.com/dsp/), graficando luego su respuesta al impulso y respuesta en frecuencia.
 

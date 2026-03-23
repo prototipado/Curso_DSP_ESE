@@ -1,4 +1,4 @@
-# Ejemplo Análisis Temporal
+# Ejemplo Correlación Cruzada
 
 Este ejemplo muestra como realizar un análisis de correlación cruzada sobre una señal de almacenada en flash con una plantilla también almacenada en memoria flash.
 
