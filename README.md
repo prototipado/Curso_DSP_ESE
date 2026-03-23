@@ -22,7 +22,7 @@ Para cada unidad temática va a encontrar ejemplos de código en `Python` (utili
 
 1. Análisis Temporal
     * [ejemplos_python/temporal_analysis](./ejemplos_python/temporal_analysis/Temporal_Analysis.ipynb)
-    * [ejemplos_C/temporal_analysis](./ejemplos_c/temporal_analysis/README.md)
+    * [ejemplos_C/temporal_analysis](./ejemplos_C/temporal_analysis/README.md)
 2. Análisis de Frecuencia
     * [ejemplos_python/frequency_analysis](./ejemplos_python/frequency_analysis/Frequency_Analysis.ipynb)
     * [ejemplos_C/frequency_analysis](./ejemplos_C/frequency_analysis/README.md)
