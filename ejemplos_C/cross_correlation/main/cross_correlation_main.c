@@ -1,7 +1,7 @@
 /*  
-# Ejemplo Correlación Cruzada
+# Ejemplo Análisis Temporal
 
-Este ejemplo muestra como realizar un análisis de correlación cruzada sobre una señal de almacenada en flash con una plantilla también almacenada en memoria flash.
+Este ejemplo muestra como realizar un análisis de parámetros temporales sobre una señal de audio almacenada en flash.
 
 ## Cómo usar el ejemplo
 
@@ -11,7 +11,7 @@ Este ejemplo no requiere ningún elemento de Hardware adicional.
 
 ### Configurar el proyecto
 
-Descomentar solo uno de los *#include signal_[n]seg.h*, para determinar cuál de las señales será analizada.
+Descomentar solo uno de los *#include chord_[letra].h*, para determinar cuál de las señales será analizada.
 
 ### Ejecutar la aplicación
 
@@ -84,7 +84,7 @@ void app_main(void){
 
     float signal_peak = 0;
     /* Cross Correlation  */
-    dsps_corr_f32_ansi(signal, N_SIGNAL, kernel, N_KERNEL, corr);
+    dsps_corr_f32(signal, N_SIGNAL, kernel, N_KERNEL, corr);
 
     float max = corr[0];              // Signal maximum
     uint16_t i_corr = 0;
@@ -106,6 +106,6 @@ void app_main(void){
     ESP_LOGI(TAG, "Correlation plot");
     dsps_view(corr_norm, N_SIGNAL-N_KERNEL, PLOT_WIDTH, PLOT_HEIGHT, -2, 2, '*');
 
-    signal_peak = (float)(i_corr);
+    signal_peak = (float)(i_corr+(N_KERNEL/2)) / SAMPLE_FREQ;
     ESP_LOGI(TAG, "Signal found at: %fs", signal_peak);
 }
