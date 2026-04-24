@@ -171,7 +171,7 @@ void app_main(void){
     // filter input signal with window filter
     ESP_LOGI(TAG, "Window");
     start_t = dsp_get_cpu_cycle_count();
-    dsps_fir_f32_ae32(&window, input, output, N_SAMPLES);
+    dsps_fir_f32(&window, input, output, N_SAMPLES);
     end_t = dsp_get_cpu_cycle_count();
     ESP_LOGI(TAG, "FIR of %d coeficients take %ld cycles for %d samples", FIR1_ORDER, (end_t - start_t), N_SAMPLES);
     plotFir(output);
@@ -183,7 +183,7 @@ void app_main(void){
     // filter input signal with equiripple filter
     ESP_LOGI(TAG, "Equiripple");
     start_t = dsp_get_cpu_cycle_count();
-    dsps_fir_f32_ae32(&equiripple, input, output, N_SAMPLES);
+    dsps_fir_f32(&equiripple, input, output, N_SAMPLES);
     end_t = dsp_get_cpu_cycle_count();
     ESP_LOGI(TAG, "FIR of %d coeficients take %ld cycles for %d samples", FIR2_ORDER, (end_t - start_t), N_SAMPLES);
     plotFir(output);
