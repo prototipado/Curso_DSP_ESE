@@ -1,5 +1,5 @@
 {
-    "idf.portWin": "COM4",
+    "idf.portWin": "COM18",
     "idf.flashBaudRate": "921600",
     "idf.flashType": "UART",
     "idf.adapterTargetName": "esp32",
@@ -9,5 +9,6 @@
     "files.associations": {
         "stdint.h": "c",
         "gpio.h": "c"
-    }
+    },
+    "idf.currentSetup": "C:\\Users\\Usuario\\esp\\v5.5.1\\esp-idf"
 }

@@ -5,12 +5,9 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdbool.h>
-
 #include "math.h"
-
-#define abs(a) (((a) < (0)) ? (-a) : (a))
-
+#include "esp_dsp.h"
 
 bool transform(float *x, float *dest);
 void clear(void);
-#endif /* _INC_WINDOW_H_ */
+#endif

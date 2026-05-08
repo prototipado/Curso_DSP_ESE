@@ -19,20 +19,28 @@ bool transform(float *x, float *dest){
     // extract features for each axis
     uint16_t feature_idx = 0;
 
+    static const float dsp_mean_factor = 1.0f / 20.0f;
     for (uint16_t j = 0; j < 4; j++) {
+        float mean = 0;
+        dsps_dotprode_f32(&queue[j], &dsp_mean_factor, &mean, 20, 4, 0);
+
+        float sum_sq = 0;
+        dsps_dotprode_f32(&queue[j], &queue[j], &sum_sq, 20, 4, 4);
+        float variance = (sum_sq / 20.0f) - (mean * mean);
+        float std = sqrtf(variance);
         float m = queue[j];
         float M = m;
-        float abs_m = abs(m);
+        float abs_m = fabsf(m);
         float abs_M = abs_m;
-        float mean = m;
-        float std = 0;
+        
+        
         float count_above_mean = 0;
         float count_below_mean = 0;
         // first-order features
         for (uint16_t i = j + 4; i < 80; i += 4) {
             float xi = queue[i];
-            float abs_xi = abs(xi);
-            mean += xi;
+            float abs_xi = fabsf(xi);
+            
 
             if (xi < m) m = xi;
 
@@ -43,18 +51,18 @@ bool transform(float *x, float *dest){
             if (abs_xi > abs_M) abs_M = abs_xi;
         }
 
-        mean /= 20;
+        
         // second-order features
         for (uint16_t i = j; i < 80; i += 4) {
             float xi = queue[i];
             float x0 = xi - mean;
-            std += x0 * x0;
+            
 
             if (x0 > 0) count_above_mean += 1;
             else count_below_mean += 1;
         }
 
-        std = sqrt(std / 20);
+        
         features[feature_idx++] = m;
         features[feature_idx++] = M;
         features[feature_idx++] = abs_m;
@@ -72,10 +80,11 @@ bool transform(float *x, float *dest){
     head -= 20;
 
     return true;
-};
+}
+
 /**
 * Clear the current data of the window
 */
 void clear() {
     head = 0;
-};
+}

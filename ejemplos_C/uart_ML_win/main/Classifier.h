@@ -9,4 +9,4 @@ const char* idxToLabel(uint8_t classIdx);
 const char* predictLabel(float *x);
 float compute_kernel(float *x, ...);
 
-#endif /* _INC_MODEL_H_ */
+#endif
